@@ -28,12 +28,12 @@ cd /path/data/ && zip -r lip_super_proc.zip images masks
 # images 和 masks 是待压缩的文件夹名称。
 ```
 
-Remove dir & unzip extract
-
-`cd /path/data && rm -r valid train test && unzip '*.zip'`
-
 ## Read, write, COPY
 copy and archive means preserve the attributes
 
 `cp -a /path/masks/. /path_target/masks/ `
+
+Remove dir & unzip extract
+
+`cd /path/data && rm -r valid train test && unzip '*.zip'`
 
