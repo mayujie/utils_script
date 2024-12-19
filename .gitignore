@@ -1,0 +1,7 @@
+.env
+**/*.pyc
+
+# jupyter
+**/.idea/
+**/.ipynb_checkpoints/
+/venv
