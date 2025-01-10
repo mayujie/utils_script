@@ -12,6 +12,16 @@ wget --version && cd /path/data &&
 wget -i RAW_SIDD_URLs.txt -P /path/target_dir/ && 
 cd /path/target_dir/ | unzip '*-*' -d /path/target_dir_new
 ```
+Extracts files 
+```bash
+# Extracts all the files and folders inside zip file into a new named folder
+unzip Imagenet32_val.zip -d ./verify_val
+
+# Extract rar file, The x option stands for "extract with full path".
+# extracted while preserving their directory structure
+unrar x tracking.part01.rar /path/to/extract/
+```
+
 Download imagenet & extract
 ```bash
 cd /path/ImageNet21K && wget https://image-net.org/data/imagenet21k_resized.tar.gz && 
@@ -21,11 +31,33 @@ cd /nas/datasets/vision/ImageNet21K && wget https://image-net.org/data/winter21_
 tar -xvzf winter21_whole.tar.gz
 ```
 
+compress to zip
 ```bash
 cd /path/data/ && zip -r lip_super_proc.zip images masks
 # -r 是递归选项，表示将 train 文件夹及其所有子文件夹和内容一并压缩
 # lip_super_proc.zip 是压缩后的文件名，压缩结果会保存为这个文件。
 # images 和 masks 是待压缩的文件夹名称。
+```
+
+7z to compress
+```bash
+# x : eXtract files with full paths
+sudo apt update && sudo apt install p7zip-full p7zip-rar && 
+7z x detection_train_data.zip
+```
+
+for-loop extraction use 7z
+```bash
+# This command is a Bash for-loop that automates the extraction of all .zip files in the current directory using the 7z utility.
+for z in *.zip; do 7z x "$z" ; done
+```
+
+zip to recover
+```bash
+# This command is used to fix or attempt to recover a potentially corrupt or incomplete ZIP archive.
+# -F   fix zipfile (-FF try harder)
+zip -F detection_train_data.zip --out detection_train_data_full.zip
+zip -FF detection_train_data.zip --out detection_train_data_cp.zip
 ```
 
 ## Read, write, COPY
@@ -36,4 +68,24 @@ copy and archive means preserve the attributes
 Remove dir & unzip extract
 
 `cd /path/data && rm -r valid train test && unzip '*.zip'`
+
+move files
+```bash
+mv -v /path/segment_training_data/*.zip /target_path/zip_back_up/segment_training/
+```
+
+## Others
+set pod to sleep
+```bash
+command: "export PYTHONPATH=$PYTHONPATH:$(pwd) && sleep 9999999999"
+```
+
+The command du -sh * is used to display the disk usage of files and directories in the current directory in a human-readable format.
+```bash
+# du Stands for Disk Usage.
+#-s Stands for summary.
+#-h human-readable.
+#* A wildcard that matches all files and directories in the current directory.
+du -sh *
+```
 
