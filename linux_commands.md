@@ -88,4 +88,10 @@ The command du -sh * is used to display the disk usage of files and directories 
 #* A wildcard that matches all files and directories in the current directory.
 du -sh *
 ```
-
+pass output string password to next command, 
+```bash
+# sudo -S Runs the following command with superuser privileges.
+# The -S option allows the password to be read from the standard input (in this case, provided by the echo command).
+# Executes the string inside the single quotes as a shell command.
+echo 'password' | sudo -S sh -c 'apt update && apt install -y p7zip-full p7zip-rar && 7z x archive.zip'
+```
