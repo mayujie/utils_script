@@ -104,6 +104,12 @@ rsync -av --delete /source_dir/ /backup_dir/
 sshpass -p 'password' rsync -avz /local_dir/ user@remote_host:/remote_dir/
 ```
 
+## Search files
+The command searches for files with the .list extension in the specified directory and its subdirectories.
+```bash
+find /path/keywords_data_hxc/data4 -type f -name '*.list'
+```
+
 ## Others
 set pod to sleep
 ```bash
