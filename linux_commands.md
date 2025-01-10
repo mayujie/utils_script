@@ -74,6 +74,36 @@ move files
 mv -v /path/segment_training_data/*.zip /target_path/zip_back_up/segment_training/
 ```
 
+## access server via SSH related
+
+### sshpass
+A utility to automate password-based SSH authentication without requiring interactive password input.
+```bash
+sshpass -p 'password' ssh user@host
+```
+
+### openssh-client
+Provides the client-side tools for SSH (Secure Shell) communication.
+
+Includes commands like ssh, scp, and sftp.
+```bash
+ssh user@host
+scp file.txt user@host:/path/to/destination
+sftp user@host
+```
+### rsync
+A powerful file synchronization and transfer tool.
+
+Efficiently syncs files and directories between local and remote locations, transferring only the changes.
+```bash
+rsync -avz local_dir/ user@host:/remote_dir/
+rsync -av --delete /source_dir/ /backup_dir/
+```
+### Combined Use Cases:
+```bash
+sshpass -p 'password' rsync -avz /local_dir/ user@remote_host:/remote_dir/
+```
+
 ## Others
 set pod to sleep
 ```bash
